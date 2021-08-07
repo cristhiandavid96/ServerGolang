@@ -14,7 +14,6 @@ func GetAllMedicamento(writer http.ResponseWriter, request *http.Request) {
 	medicamentos := []models.Medicamento{}
 	db := commons.GetConnection()
 	defer db.Close()
-
 	db.Find(&medicamentos)
 	json, _ := json.Marshal(medicamentos)
 	commons.SendReponse(writer, http.StatusOK, json)

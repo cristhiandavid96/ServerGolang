@@ -7,3 +7,9 @@ type Promocion struct {
 	FechaInicio    string `json:"fecha_inicio"`
 	FechaFin       string `json:"fecha_fin"`
 }
+
+
+// TableName overrides the table name used by User to `profiles`
+func (Promocion) TableName() string {
+  return "promocion"
+}

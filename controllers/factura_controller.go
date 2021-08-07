@@ -14,7 +14,6 @@ func GetAllFactura(writer http.ResponseWriter, request *http.Request) {
 	facturas := []models.Factura{}
 	db := commons.GetConnection()
 	defer db.Close()
-
 	db.Find(&facturas)
 	json, _ := json.Marshal(facturas)
 	commons.SendReponse(writer, http.StatusOK, json)

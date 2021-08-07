@@ -6,3 +6,8 @@ type Medicamento struct {
 	Precio    string `json:"precio"`
 	Ubicacion string `json:"ubicacion"`
 }
+
+// TableName overrides the table name used by User to `profiles`
+func (Medicamento) TableName() string {
+  return "medicamento"
+}

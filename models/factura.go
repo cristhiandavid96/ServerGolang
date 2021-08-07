@@ -5,3 +5,9 @@ type Factura struct {
 	PagoTotal    string  `json:"pago_total"`
 	FechaCrear   string    `json:"fecha_crear"`
 }
+
+
+// TableName overrides the table name used by User to `profiles`
+func (Factura) TableName() string {
+  return "factura"
+}
