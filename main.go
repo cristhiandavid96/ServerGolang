@@ -10,10 +10,10 @@ import (
 )
 
 func main() {
-	commons.Migrate()
-
 	router := mux.NewRouter()
-	routes.SetPersonaRoutes(router)
+	routes.SetFacturasRoutes(router)
+	routes.SetMedicamentosRoutes(router)
+	routes.SetPromocionesRoutes(router)
 	commons.EnableCORS(router)
 
 	server := http.Server{
