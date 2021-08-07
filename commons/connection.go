@@ -3,11 +3,11 @@ package commons
 import (
 	"log"
 
-	"github.com/cristhiandavid96/ServerGolang/models"
+	// "github.com/cristhiandavid96/ServerGolang/models"
 
 	"github.com/jinzhu/gorm"
 
-	"github.com/jinzhu/gorm/dialects/mysql"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 func GetConnection() *gorm.DB {

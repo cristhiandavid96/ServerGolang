@@ -10,7 +10,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func GetAll(writer http.ResponseWriter, request *http.Request) {
+func GetAllFactura(writer http.ResponseWriter, request *http.Request) {
 	facturas := []models.Factura{}
 	db := commons.GetConnection()
 	defer db.Close()
@@ -20,7 +20,7 @@ func GetAll(writer http.ResponseWriter, request *http.Request) {
 	commons.SendReponse(writer, http.StatusOK, json)
 }
 
-func Get(writer http.ResponseWriter, request *http.Request) {
+func GetFactura(writer http.ResponseWriter, request *http.Request) {
 	factura := models.Factura{}
 
 	id := mux.Vars(request)["id"]
@@ -39,7 +39,7 @@ func Get(writer http.ResponseWriter, request *http.Request) {
 
 }
 
-func Save(writer http.ResponseWriter, request *http.Request) {
+func SaveFactura(writer http.ResponseWriter, request *http.Request) {
 	factura := models.Factura{}
 
 	db := commons.GetConnection()
@@ -66,7 +66,7 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 	commons.SendReponse(writer, http.StatusCreated, json)
 }
 
-func Delete(writer http.ResponseWriter, request *http.Request) {
+func DeleteFactura(writer http.ResponseWriter, request *http.Request) {
 	factura := models.Factura{}
 
 	db := commons.GetConnection()

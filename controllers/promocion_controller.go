@@ -10,7 +10,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func GetAll(writer http.ResponseWriter, request *http.Request) {
+func GetAllPromocion(writer http.ResponseWriter, request *http.Request) {
 	promociones := []models.Promocion{}
 	db := commons.GetConnection()
 	defer db.Close()
@@ -20,7 +20,7 @@ func GetAll(writer http.ResponseWriter, request *http.Request) {
 	commons.SendReponse(writer, http.StatusOK, json)
 }
 
-func Get(writer http.ResponseWriter, request *http.Request) {
+func GetPromocion(writer http.ResponseWriter, request *http.Request) {
 	promocion := models.Promocion{}
 
 	id := mux.Vars(request)["id"]
@@ -39,7 +39,7 @@ func Get(writer http.ResponseWriter, request *http.Request) {
 
 }
 
-func Save(writer http.ResponseWriter, request *http.Request) {
+func SavePromocion(writer http.ResponseWriter, request *http.Request) {
 	promocion := models.Promocion{}
 
 	db := commons.GetConnection()
@@ -66,7 +66,7 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 	commons.SendReponse(writer, http.StatusCreated, json)
 }
 
-func Delete(writer http.ResponseWriter, request *http.Request) {
+func DeletePromocion(writer http.ResponseWriter, request *http.Request) {
 	promocion := models.Promocion{}
 
 	db := commons.GetConnection()

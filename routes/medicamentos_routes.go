@@ -7,8 +7,8 @@ import (
 
 func SetMedicamentosRoutes(router *mux.Router) {
 	subRoute := router.PathPrefix("/medicamento/api").Subrouter()
-	subRoute.HandleFunc("/all", controllers.GetAll).Methods("GET")
-	subRoute.HandleFunc("/save", controllers.Save).Methods("POST")
-	subRoute.HandleFunc("/delete/{id}", controllers.Delete).Methods("POST")
-	subRoute.HandleFunc("/find/{id}", controllers.Get).Methods("GET")
+	subRoute.HandleFunc("/all", controllers.GetAllMedicamento).Methods("GET")
+	subRoute.HandleFunc("/save", controllers.SaveMedicamento).Methods("POST")
+	subRoute.HandleFunc("/delete/{id}", controllers.DeleteMedicamento).Methods("POST")
+	subRoute.HandleFunc("/find/{id}", controllers.GetMedicamento).Methods("GET")
 }
