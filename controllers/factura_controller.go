@@ -11,27 +11,27 @@ import (
 )
 
 func GetAll(writer http.ResponseWriter, request *http.Request) {
-	personas := []models.Persona{}
+	facturas := []models.Factura{}
 	db := commons.GetConnection()
 	defer db.Close()
 
-	db.Find(&personas)
-	json, _ := json.Marshal(personas)
+	db.Find(&facturas)
+	json, _ := json.Marshal(facturas)
 	commons.SendReponse(writer, http.StatusOK, json)
 }
 
 func Get(writer http.ResponseWriter, request *http.Request) {
-	persona := models.Persona{}
+	factura := models.Factura{}
 
 	id := mux.Vars(request)["id"]
 
 	db := commons.GetConnection()
 	defer db.Close()
 
-	db.Find(&persona, id)
+	db.Find(&factura, id)
 
-	if persona.ID > 0 {
-		json, _ := json.Marshal(persona)
+	if factura.ID > 0 {
+		json, _ := json.Marshal(factura)
 		commons.SendReponse(writer, http.StatusOK, json)
 	} else {
 		commons.SendError(writer, http.StatusNotFound)
@@ -40,12 +40,12 @@ func Get(writer http.ResponseWriter, request *http.Request) {
 }
 
 func Save(writer http.ResponseWriter, request *http.Request) {
-	persona := models.Persona{}
+	factura := models.Factura{}
 
 	db := commons.GetConnection()
 	defer db.Close()
 
-	error := json.NewDecoder(request.Body).Decode(&persona)
+	error := json.NewDecoder(request.Body).Decode(&factura)
 
 	if error != nil {
 		log.Fatal(error)
@@ -53,7 +53,7 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	error = db.Save(&persona).Error
+	error = db.Save(&factura).Error
 
 	if error != nil {
 		log.Fatal(error)
@@ -61,23 +61,23 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	json, _ := json.Marshal(persona)
+	json, _ := json.Marshal(factura)
 
 	commons.SendReponse(writer, http.StatusCreated, json)
 }
 
 func Delete(writer http.ResponseWriter, request *http.Request) {
-	persona := models.Persona{}
+	factura := models.Factura{}
 
 	db := commons.GetConnection()
 	defer db.Close()
 
 	id := mux.Vars(request)["id"]
 
-	db.Find(&persona, id)
+	db.Find(&factura, id)
 
-	if persona.ID > 0 {
-		db.Delete(persona)
+	if factura.ID > 0 {
+		db.Delete(factura)
 		commons.SendReponse(writer, http.StatusOK, []byte(`{}`))
 	} else {
 		commons.SendError(writer, http.StatusNotFound)

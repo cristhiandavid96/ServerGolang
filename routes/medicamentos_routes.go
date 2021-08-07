@@ -5,8 +5,8 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func SetPersonaRoutes(router *mux.Router) {
-	subRoute := router.PathPrefix("/persona/api").Subrouter()
+func SetMedicamentosRoutes(router *mux.Router) {
+	subRoute := router.PathPrefix("/medicamento/api").Subrouter()
 	subRoute.HandleFunc("/all", controllers.GetAll).Methods("GET")
 	subRoute.HandleFunc("/save", controllers.Save).Methods("POST")
 	subRoute.HandleFunc("/delete/{id}", controllers.Delete).Methods("POST")
